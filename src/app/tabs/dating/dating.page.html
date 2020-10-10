@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+    <ion-toolbar class="toolbar">
+        <ion-title>
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button class="menu-btn" menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="notifications"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-header>
+        <ion-toolbar class="toolbar-secondary">
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <a>Hẹn hò</a>
+                    </ion-col>
+                    <ion-col>
+                        <a class="active">Quanh đây</a>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-toolbar>
+    </ion-header>
+    <ion-list app-masonry [options]="options" class="cards">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+            <div class="buttons">
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+                <div class="name">Alisa</div>
+                <div class="distance">5km</div>
+                <ion-icon class="share" name="share-social-outline"></ion-icon>
+                <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1510832198440-a52376950479?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+            <div class="buttons">
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+                <div class="name">Valerie</div>
+                <div class="distance">5km</div>
+                <ion-icon class="share" name="share-social-outline"></ion-icon>
+                <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1510520434124-5bc7e642b61d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+            <div class="buttons">
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+                <div class="name">Valerie</div>
+                <div class="distance">5km</div>
+                <ion-icon class="share" name="share-social-outline"></ion-icon>
+                <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1474073705359-5da2a8270c64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+            <div class="buttons">
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+                <div class="name">Valerie</div>
+                <div class="distance">5km</div>
+                <ion-icon class="share" name="share-social-outline"></ion-icon>
+                <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </div>
+    </ion-list>
+</ion-content>

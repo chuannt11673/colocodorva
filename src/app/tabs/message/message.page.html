@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+    <ion-toolbar class="toolbar">
+        <ion-title>
+            <div class="title">
+                Message
+            </div>
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button class="menu-btn" menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="notifications"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list class="chat">
+        <ion-item class="item" lines="none" (click)="chat()">
+            <ion-avatar class="avatar" slot="start">
+                <img src="https://www.mykhel.com/img/2019/11/goldberg-1575120319.jpg" />
+            </ion-avatar>
+            <ion-label>
+                <div class="name">Phương Ly</div>
+                <p class="message">Tối nay 7h e mới đi làm về, hẹn a 8h nhé :D</p>
+            </ion-label>
+            <div class="time">{{date | date: 'h:mm a'}}</div>
+            <div class="badge">2</div>
+        </ion-item>
+        <ion-item class="item" lines="none" (click)="chat()">
+            <ion-avatar class="avatar" slot="start">
+                <img src="https://www.mykhel.com/img/2019/11/goldberg-1575120319.jpg" />
+            </ion-avatar>
+            <ion-label>
+                <div class="name">Phương Ly</div>
+                <p class="message">Tối nay 7h e mới đi làm về, hẹn a 8h nhé :D</p>
+            </ion-label>
+            <div class="time">{{date | date: 'h:mm a'}}</div>
+            <div class="badge">2</div>
+        </ion-item>
+    </ion-list>
+</ion-content>

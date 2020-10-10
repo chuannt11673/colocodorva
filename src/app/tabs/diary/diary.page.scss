@@ -1,0 +1,57 @@
+@import 'src/variables.scss';
+.toolbar {
+    --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
+    .menu-btn {
+        color: #fff;
+    }
+    ion-icon {
+        color: #fff;
+    }
+}
+
+.toolbar-secondary {
+    --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
+    ion-col {
+        text-align: center;
+        a {
+            color: #fff;
+            font-size: 16px;
+            padding: 6px 16px;
+        }
+    }
+    .active {
+        border-bottom: 2px solid #ccc;
+    }
+}
+
+.action-card {
+    margin: 0px;
+    box-shadow: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #ccc;
+    .avatar {
+        h3 {
+            margin-bottom: 0;
+        }
+    }
+    .images {
+        position: relative;
+        height: 100vw;
+        overflow: hidden;
+        line-height: 0px;
+        img {
+            border: 1px solid #fff;
+            object-fit: cover;
+        }
+    }
+    .footer {
+        float: right;
+        ion-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+        .active {
+            color: #f31a9f;
+        }
+    }
+}
