@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Chat</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="chat">
+        <div class="chat-history">
+            <ul>
+                <li class="clearfix" *ngFor="let message of chat.items">
+                    <div class="message-data" [ngClass]="{'align-right': message.isMyself}">
+                        <span class="message-data-name">
+                            <img [src]="message.isMyself ? '/assets/characters/kidaha-01.svg' : '/assets/characters/kidaha-02.svg'" style="width: 13vw;">
+                        </span>
+                    </div>
+                    <div class="row" [ngClass]="{'row-left': !message.isMyself, 'row-right': message.isMyself}">
+                        <div class="column" *ngFor="let image of message.images">
+                            <img [src]="image" alt="Snow" style="width:100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div *ngIf="message.message" class="message" [ngClass]="{'other-message float-right': message.isMyself, 'my-message': !message.isMyself, 'bg-transparent': message.hasImage}" [innerHtml]="message.message | safeHtml"></div>
+                </li>
+            </ul>
+        </div>
+        <!-- end chat-history -->
+    </div>
+</ion-content>
+<ion-footer>
+    <app-message-box (onSelectImages)="onSelectImages($event)"></app-message-box>
+</ion-footer>

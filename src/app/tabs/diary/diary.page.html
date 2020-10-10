@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+    <ion-toolbar class="toolbar">
+        <ion-title>
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button class="menu-btn" menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="notifications"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-header>
+        <ion-toolbar class="toolbar-secondary">
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <a class="active">Bảng tin</a>
+                    </ion-col>
+                    <ion-col>
+                        <a>TOP</a>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-list>
+        <ion-card class="action-card">
+            <ion-item class="avatar" lines="none">
+                <ion-avatar slot="start">
+                    <img src="../../../assets/images/avatar.jpg" />
+                </ion-avatar>
+                <ion-label>
+                    <h3>Lorem ipsum</h3>
+                    <p>3 minutes ago</p>
+                </ion-label>
+            </ion-item>
+            <div class="images" filledImages (onComplete)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
+                <ion-skeleton-text *ngIf="!onFillComplete" animated></ion-skeleton-text>
+                <img src="https://pixelsquote.net/wp-content/uploads/images1/Love-Quote-9.jpg" />
+            </div>
+            <ion-card-content briefContent>
+                Here's a small text description for the card content. Nothing more, nothing less.
+            </ion-card-content>
+            <div class="footer">
+                <ion-buttons slot="end">
+                    <ion-button>
+                        <ion-icon class="active" name="heart-outline"></ion-icon>123
+                    </ion-button>
+                    <ion-button>
+                        <ion-icon name="chatbox-ellipses-outline"></ion-icon>43
+                    </ion-button>
+                    <ion-button>
+                        <ion-icon name="share-outline"></ion-icon>3
+                    </ion-button>
+                </ion-buttons>
+            </div>
+        </ion-card>
+    </ion-list>
+</ion-content>
