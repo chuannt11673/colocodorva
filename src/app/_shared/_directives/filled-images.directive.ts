@@ -1,9 +1,9 @@
-import { Directive, ElementRef, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Directive, ElementRef, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 
 @Directive({
     selector: '[filledImages]',
 })
-export class FilledImagesDirective implements OnInit {
+export class FilledImagesDirective implements OnInit, AfterViewInit {
 
     constructor(public el: ElementRef) { }
     
@@ -24,7 +24,7 @@ export class FilledImagesDirective implements OnInit {
         if (this.length === 1) {
             const img = this.images[0];
             img.onload = () => {
-                this.el.nativeElement.style.height = img.height + 'px';
+                this.el.nativeElement.style.height = 'auto';
                 this.onComplete.emit(true);
             };
             return;
@@ -37,6 +37,9 @@ export class FilledImagesDirective implements OnInit {
         this.images.map((image: HTMLImageElement, index: number) => {
             this.format(image, index);
         });
+    }
+
+    ngAfterViewInit(): void {
     }
 
     format(image: HTMLImageElement, index: number) {
@@ -77,7 +80,8 @@ export class FilledImagesDirective implements OnInit {
         if (remainingLength === 0)
             return;
 
-        const lastImage = this.images[this.length - 1];
+        const index = this.length - 1 <= 4 ? this.length - 1 : 4;
+        const lastImage = this.images[index];
         lastImage.style.opacity = '0.6';
 
         const div = document.createElement('div');
@@ -90,10 +94,9 @@ export class FilledImagesDirective implements OnInit {
         div.style.color = '#fff';
         div.style.fontSize = '1.6em';
         div.style.fontWeight = '500';
-        div.style.width = lastImage.offsetWidth + 'px';
-        div.style.height = lastImage.offsetHeight + 'px';
+        div.style.width = lastImage.style.width;
+        div.style.height = lastImage.style.height;
         div.innerHTML = '+' + remainingLength;
-
         div.addEventListener('click', () => {
             this.viewMore.emit(true);
         });

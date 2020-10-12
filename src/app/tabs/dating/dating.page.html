@@ -27,7 +27,33 @@
             </ion-grid>
         </ion-toolbar>
     </ion-header>
-    <ion-list app-masonry [options]="options" class="cards">
+    <div *ngIf="!isCompleted" class="skeleton">
+        <ion-row>
+            <ion-col>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-col>
+            <ion-col>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-col>
+            <ion-col>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-col>
+            <ion-col>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-list app-masonry [options]="options" (onCompleted)="onCompleted($event)" class="cards">
         <div class="card">
             <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
             <div class="buttons">
@@ -63,6 +89,26 @@
             <div class="buttons">
                 <ion-icon class="heart" name="heart-outline"></ion-icon>
                 <div class="name">Valerie</div>
+                <div class="distance">5km</div>
+                <ion-icon class="share" name="share-social-outline"></ion-icon>
+                <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1504730030853-eff311f57d3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+            <div class="buttons">
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+                <div class="name">Roberto</div>
+                <div class="distance">5km</div>
+                <ion-icon class="share" name="share-social-outline"></ion-icon>
+                <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1440589473619-3cde28941638?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+            <div class="buttons">
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+                <div class="name">Roksolana Morana</div>
                 <div class="distance">5km</div>
                 <ion-icon class="share" name="share-social-outline"></ion-icon>
                 <ion-icon class="more" name="ellipsis-horizontal-outline"></ion-icon>

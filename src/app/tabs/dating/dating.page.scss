@@ -23,8 +23,17 @@
     }
 }
 
+.skeleton {
+    ion-col {
+        ion-skeleton-text {
+            height: 60vw;
+        }
+    }
+}
+
 .cards {
     position: relative;
+    height: 0px;
     margin-top: 5px;
     .card {
         width: 50vw;
@@ -41,6 +50,11 @@
             color: #fff;
             ion-icon {
                 font-size: 21px;
+            }
+            .name {
+                text-align: center;
+                line-height: 15px;
+                max-width: 40%;
             }
         }
     }

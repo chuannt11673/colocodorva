@@ -1,6 +1,3 @@
-import { MasonryDirective } from './_directives/masonry.directive';
-import { MaterialModule } from './material.module';
-import { PostReviewComponent } from './_modals/post-review/post-review.component';
 import { FilledImagesDirective } from './_directives/filled-images.directive';
 import { BriefContentDirective } from './_directives/brief-content.directive';
 import { IonicModule } from '@ionic/angular';
@@ -12,12 +9,11 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { CDVPhotoLibraryPipe } from './_pipes/cdvphotolibrary.pipe';
 import { SafeHtmlPipe } from './_pipes/safe-html.pipe';
-import { NgxMasonryModule } from 'ngx-masonry';
+import { MasonryDirective } from './_directives/masonry.directive';
 
 @NgModule({
     declarations: [
         MessageBoxComponent,
-        PostReviewComponent,
         CDVPhotoLibraryPipe,
         SafeHtmlPipe,
         BriefContentDirective,
@@ -26,18 +22,13 @@ import { NgxMasonryModule } from 'ngx-masonry';
     ],
     imports: [
         CommonModule,
-        MaterialModule,
         IonicModule,
         CoreModule,
         PickerModule,
-        EmojiModule,
-        NgxMasonryModule
+        EmojiModule
     ],
     exports: [
-        MaterialModule,
-        NgxMasonryModule,
         MessageBoxComponent,
-        PostReviewComponent,
         CDVPhotoLibraryPipe,
         SafeHtmlPipe,
         BriefContentDirective,
@@ -45,7 +36,6 @@ import { NgxMasonryModule } from 'ngx-masonry';
         MasonryDirective
     ],
     entryComponents: [
-        PostReviewComponent
     ],
     providers: [
     ],

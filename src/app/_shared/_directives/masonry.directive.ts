@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Directive({
     selector: '[app-masonry]',
@@ -7,6 +7,7 @@ export class MasonryDirective implements OnInit {
 
     constructor(public el: ElementRef) {}
     @Input() options: any;
+    @Output() onCompleted: EventEmitter<boolean> = new EventEmitter();
     elements: HTMLElement[];
     height: any[];
     get length() {
@@ -51,6 +52,7 @@ export class MasonryDirective implements OnInit {
         });
 
         this.el.nativeElement.style.height = Math.max(...this.height) + 'px';
+        this.onCompleted.emit(true);
     }
 
     initialHeight() {

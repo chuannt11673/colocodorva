@@ -1,5 +1,4 @@
-import { PostReviewComponent } from './../../_shared/_modals/post-review/post-review.component';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,21 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiaryPage implements OnInit {
 
-  constructor(public modal: ModalController) { }
+  constructor(public modal: ModalController, public nav: NavController) { }
   onFillComplete: boolean;
 
   ngOnInit() {
-  }
-
-  async viewPost(post: any) {
-    const modal = await this.modal.create({
-      component: PostReviewComponent,
-      componentProps: {
-        post: post
-      },
-      cssClass: 'my-custom-class'
-    });
-    return await modal.present();
   }
 
   onFillCompleteHandler($event: boolean) {
@@ -32,5 +20,9 @@ export class DiaryPage implements OnInit {
 
   viewMore($event : boolean) {
     console.log($event);
+  }
+
+  comment() {
+    this.nav.navigateForward('post/1');
   }
 }

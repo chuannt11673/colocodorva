@@ -41,7 +41,12 @@
             </ion-item>
             <div class="images" filledImages (onComplete)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
                 <ion-skeleton-text *ngIf="!onFillComplete" animated></ion-skeleton-text>
-                <img src="https://pixelsquote.net/wp-content/uploads/images1/Love-Quote-9.jpg" />
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                <img src="https://images.unsplash.com/photo-1474073705359-5da2a8270c64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                <img src="https://images.unsplash.com/photo-1448376561459-dbe8868fa34c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                <img src="https://images.unsplash.com/photo-1504730030853-eff311f57d3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                <img src="https://images.unsplash.com/photo-1504730030853-eff311f57d3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </div>
             <ion-card-content briefContent>
                 Here's a small text description for the card content. Nothing more, nothing less.
@@ -51,11 +56,11 @@
                     <ion-button>
                         <ion-icon class="active" name="heart-outline"></ion-icon>123
                     </ion-button>
-                    <ion-button>
+                    <ion-button (click)="comment()">
                         <ion-icon name="chatbox-ellipses-outline"></ion-icon>43
                     </ion-button>
                     <ion-button>
-                        <ion-icon name="share-outline"></ion-icon>3
+                        <ion-icon name="share-social-outline"></ion-icon>3
                     </ion-button>
                 </ion-buttons>
             </div>

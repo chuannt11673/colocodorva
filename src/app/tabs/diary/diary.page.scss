@@ -46,6 +46,9 @@
     }
     .footer {
         float: right;
+        ion-button {
+            font-weight: 400;
+        }
         ion-icon {
             font-size: 24px;
             margin-right: 5px;
@@ -54,4 +57,8 @@
             color: #f31a9f;
         }
     }
+}
+
+.action-card:last-child {
+    border: none;
 }

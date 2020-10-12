@@ -1,0 +1,96 @@
+<ion-header class="header">
+    <ion-toolbar>
+        <ion-title>
+            <div class="title">Quay lại</div>
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button class="notification">
+                <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card class="action-card">
+        <ion-item class="avatar" lines="none">
+            <ion-avatar slot="start">
+                <img src="../../../../../assets/images/avatar.jpg" />
+            </ion-avatar>
+            <ion-label>
+                <h3>Lorem ipsum</h3>
+                <p>3 minutes ago</p>
+            </ion-label>
+        </ion-item>
+        <div class="images" filledImages (onComplete)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
+            <ion-skeleton-text *ngIf="!onFillComplete" animated></ion-skeleton-text>
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+        </div>
+        <ion-card-content briefContent>
+            Here's a small text description for the card content. Nothing more, nothing less.
+        </ion-card-content>
+        <div class="footer">
+            <ion-buttons slot="end">
+                <ion-button>
+                    <ion-icon class="active" name="heart-outline"></ion-icon>123
+                </ion-button>
+                <ion-button>
+                    <ion-icon name="chatbox-ellipses-outline"></ion-icon>43
+                </ion-button>
+                <ion-button>
+                    <ion-icon name="share-social-outline"></ion-icon>3
+                </ion-button>
+            </ion-buttons>
+        </div>
+    </ion-card>
+    <div class="comments">
+        <ion-list class="chat">
+            <div>
+                <ion-item class="item" lines="none">
+                    <ion-avatar class="avatar" slot="start">
+                        <img src="https://images.unsplash.com/photo-1504730030853-eff311f57d3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                    </ion-avatar>
+                    <ion-label class="message-area">
+                        <div class="name">Lê Trung Đức</div>
+                        <p class="message">Điều duy nhất hai người hợp nhau đó là cả hai cùng im lặng và... Biến mất</p>
+                    </ion-label>
+                    <div class="time">{{date | date: 'h:mm a'}}</div>
+                    <div class="actions">
+                        <ion-buttons slot="end">
+                            <ion-button>
+                                <ion-icon class="active" name="heart-outline"></ion-icon>45
+                            </ion-button>
+                            <ion-button>
+                                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                            </ion-button>
+                        </ion-buttons>
+                    </div>
+                </ion-item>
+                <ion-list class="sub-chat">
+                    <ion-item class="item" lines="none">
+                        <ion-avatar class="avatar" slot="start">
+                            <img src="https://images.unsplash.com/photo-1504730030853-eff311f57d3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
+                        </ion-avatar>
+                        <ion-label class="message-area">
+                            <div class="name">Lê Trung Đức</div>
+                            <p class="message">Điều duy nhất hai người hợp nhau đó là cả hai cùng im lặng và... Biến mất</p>
+                        </ion-label>
+                        <div class="time">{{date | date: 'h:mm a'}}</div>
+                        <div class="actions">
+                            <ion-buttons slot="end">
+                                <ion-button>
+                                    <ion-icon class="active" name="heart-outline"></ion-icon>45
+                                </ion-button>
+                                <ion-button>
+                                    <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                                </ion-button>
+                            </ion-buttons>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>
