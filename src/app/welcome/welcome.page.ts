@@ -1,3 +1,4 @@
+import { AuthService } from './../_core/services/auth.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePage implements OnInit {
 
-  constructor(public nav: NavController) { }
+  constructor(public nav: NavController, public authService: AuthService) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.nav.navigateForward('tabs');
+    this.authService.startAuthentication().subscribe(() => {}, err => {
+      console.log(err);
+    });
   }
-
 }
