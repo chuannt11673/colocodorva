@@ -10,6 +10,7 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { CDVPhotoLibraryPipe } from './_pipes/cdvphotolibrary.pipe';
 import { SafeHtmlPipe } from './_pipes/safe-html.pipe';
 import { MasonryDirective } from './_directives/masonry.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { MasonryDirective } from './_directives/masonry.directive';
         IonicModule,
         CoreModule,
         PickerModule,
-        EmojiModule
+        EmojiModule,
+        HttpClientModule
     ],
     exports: [
         MessageBoxComponent,
