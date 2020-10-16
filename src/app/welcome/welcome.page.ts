@@ -15,8 +15,5 @@ export class WelcomePage implements OnInit {
   }
 
   login() {
-    this.authService.startAuthentication().subscribe(() => {}, err => {
-      console.log(err);
-    });
   }
 }

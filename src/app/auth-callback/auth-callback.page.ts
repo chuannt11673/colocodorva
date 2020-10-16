@@ -1,5 +1,4 @@
 import { NavController } from '@ionic/angular';
-import { AuthService } from './../_core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,12 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthCallbackPage implements OnInit {
 
-  constructor(public nav: NavController, public authSerrvice: AuthService) { }
+  constructor(public nav: NavController) { }
 
   ngOnInit() {
-    this.authSerrvice.completeAuthentication().subscribe(() => {
-      this.nav.navigateRoot('tabs');
-    });
   }
 
 }
