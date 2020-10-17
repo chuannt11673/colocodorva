@@ -1,0 +1,65 @@
+ion-header {
+    ion-toolbar {
+        --min-height: 5px;
+        --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
+        --box-shadow: none;
+    }
+}
+
+.avatar {
+    position: relative;
+    width: 100vw;
+    .order-btn {
+        --background: #fff;
+        --border-radius: 50%;
+        --box-shadow: none;
+        --border-width: 1px;
+        --border-style: solid;
+        --border-color: #6b6b6b;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        bottom: -25px;
+        left: calc(50vw - 25px);
+        ion-icon {
+            color: #6b6b6b;
+            font-size: 21px;
+        }
+    }
+}
+
+.header {
+    padding-top: 5px;
+    .name-area {
+        width: 50vw;
+        float: left;
+        padding: 16px;
+        line-height: 24px;
+        .name {
+            font-size: 22px;
+        }
+        .age {
+            opacity: 0.8;
+        }
+    }
+    .actions {
+        width: 50vw;
+        float: right;
+        padding: 0 10px;
+        text-align: right;
+        ion-icon {
+            color: #f31a9f;
+            width: 5rem;
+            font-size: 30px;
+        }
+        .likes {
+            opacity: 0.8;
+        }
+    }
+}
+
+ion-card-content {
+    clear: both;
+    font-size: 15px;
+    border-bottom: 1px solid #ccc;
+}

@@ -25,4 +25,8 @@ export class DiaryPage implements OnInit {
   comment() {
     this.nav.navigateForward('post/1');
   }
+
+  post() {
+    this.nav.navigateForward('new-post');
+  }
 }

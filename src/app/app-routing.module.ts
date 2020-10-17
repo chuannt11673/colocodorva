@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'auth-callback',
     loadChildren: () => import('./auth-callback/auth-callback.module').then( m => m.AuthCallbackPageModule)
+  },
+  {
+    path: 'new-post',
+    loadChildren: () => import('./tabs/diary/new-diary/new-diary.module').then( m => m.NewDiaryPageModule)
   }
 ];
 @NgModule({

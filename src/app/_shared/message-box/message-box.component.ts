@@ -82,11 +82,7 @@ export class MessageBoxComponent implements OnInit {
   subscribeKeyboard() {
     window.addEventListener('keyboardWillShow', (event: any) => {
       this.isShowEmoji = false;
-      let height = - event.keyboardHeight - 56;
-      this.actionArea.style.top = `${height}px`;
-      setTimeout(() => {
-        this.ele.nativeElement.parentElement.style.marginTop = `${Math.abs(height)}px`;
-      }, 300);
+      this.resetTopStyle();
     });
   }
 

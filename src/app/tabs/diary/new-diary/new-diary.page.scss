@@ -1,0 +1,92 @@
+@import 'src/variables.scss';
+.header {
+    .title {
+        font-weight: 400;
+    }
+    .post {
+        font-weight: 400;
+        color: $primary-color-pink;
+    }
+}
+
+.avatar {
+    margin-top: 10px;
+    ion-avatar {
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+    }
+    .actions {
+        margin-top: 2px;
+        ion-button {
+            --background: #fff;
+            --box-shadow: none;
+            --border-width: 1px;
+            --border-style: solid;
+            --border-color: #6b6b6b;
+            --border-radius: 12px;
+            --color: black;
+            --padding-start: 8px;
+            --padding-end: 8px;
+            opacity: 0.8;
+            font-weight: 400;
+            text-transform: initial;
+            ion-icon {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.action-card {
+    margin: 0px;
+    box-shadow: none;
+    border-radius: 0px;
+    .content {
+        outline: none;
+    }
+    .content:empty:before {
+        content: attr(placeholder);
+        display: flex;
+        align-items: center;
+    }
+    .images {
+        position: relative;
+        height: 100vw;
+        overflow: hidden;
+        line-height: 0px;
+        img {
+            border: 1px solid #fff;
+            object-fit: cover;
+        }
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 15px;
+        ion-button {
+            --background: #fff;
+            --box-shadow: none;
+            --border-width: 1px;
+            --border-style: solid;
+            --border-color: #6b6b6b;
+            --border-radius: 12px;
+            --color: black;
+            --padding-top: 2px;
+            --padding-bottom: 2px;
+            --padding-start: 8px;
+            --padding-end: 8px;
+            opacity: 0.8;
+            font-size: 12px;
+            text-transform: initial;
+        }
+        .more-images {
+            --border-color: #01a41c;
+            --color: #01a41c;
+        }
+        .tag {
+            --border-color: #f31a9f;
+            --color: #f31a9f;
+        }
+    }
+}

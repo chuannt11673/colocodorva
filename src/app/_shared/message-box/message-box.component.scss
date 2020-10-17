@@ -4,11 +4,12 @@ div.action-area {
     transition-timing-function: ease;
     top: -56px;
     ion-toolbar {
+        --background: #e6e6e6;
         height: 56px;
         padding: 0 5px;
         div.editable {
-            padding: 10px 12px;
-            background-color: #fff;
+            padding: 10px 6px;
+            background-color: #e6e6e6;
             line-height: 26px;
             overflow: hidden;
             outline: none;
@@ -18,11 +19,32 @@ div.action-area {
             border-color: aqua;
         }
         [contenteditable=true]:empty:before {
-            color: #ccc;
             content: attr(placeholder);
-            display: block;
-            /* For Firefox */
-            white-space: pre-wrap;
+            display: flex;
+            align-items: center;
+        }
+        ion-button.face {
+            --padding-start: 0;
+            --padding-end: 0;
+            div.face-icon {
+                width: 36px;
+                height: 36px;
+                display: inline-block;
+                background-image: url('../../../assets/images/icons-v3.png');
+                background-size: 5700% 5700%;
+                background-position: 55.3571% 1.78571%;
+                margin: 0px;
+                vertical-align: middle;
+            }
+        }
+        .secondary {
+            margin-bottom: 3px;
+            ion-button.send {
+                --color: #f31a9f;
+                font-size: 21px;
+                margin-bottom: 5px;
+                transform: rotate(-30deg);
+            }
         }
     }
 }

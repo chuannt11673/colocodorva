@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('./diary/diary.module').then(m => m.DiaryPageModule)
       },
       {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+      },
+      {
         path: '',
         redirectTo: 'message',
         pathMatch: 'full'

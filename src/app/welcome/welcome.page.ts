@@ -15,5 +15,6 @@ export class WelcomePage implements OnInit {
   }
 
   login() {
+    this.nav.navigateRoot('tabs');
   }
 }
