@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 import { ModalController, ActionSheetController } from '@ionic/angular';
 import { EmojiService } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
@@ -14,31 +14,38 @@ import { UriToBase64 } from 'src/app/_core/canvas';
   templateUrl: './message-box.component.html',
   styleUrls: ['./message-box.component.scss']
 })
-export class MessageBoxComponent implements OnInit {
-  sourceType: number;
-  isShowEmoji = false;
-  imageBase64Items: any[] = [];
-  isInput: boolean = false;
-
-  actionArea: HTMLElement;
-  actionHeight: number;
-
-  backgroundImageFn = () => '/assets/images/icons-v3.png';
+export class MessageBoxComponent implements OnInit, AfterViewInit {
 
   private newNode: any;
   private sourceTypes = {
     library: 1,
     video: 2
-  }
+  };
 
-  @Input() disableImageSelection: boolean = false;
-  @Input() disableVideoSelection: boolean = true;
-  @Input() disableTextBox: boolean = false;
-  @Input() disableSendBtn: boolean = false;
-  @Input() oDoc: HTMLDivElement;
-  @Output() onSend: EventEmitter<any> = new EventEmitter();
-  @Output() onSelectEmoji: EventEmitter<any> = new EventEmitter();
-  @Output() onSelectImages: EventEmitter<any> = new EventEmitter();
+  disableImage = false;
+  disableVideo = false;
+  disableTextbox = false;
+  disableSendbtn = false;
+  oDoc: HTMLDivElement;
+  @Input('disable-image') set setDisableImage(value: boolean) { this.disableImage = value; }
+  @Input('disable-video') set setDisableVideo(value: boolean) { this.disableVideo = value; }
+  @Input('disable-textbox') set setDisableTextbox(value: boolean) { this.disableTextbox = value; }
+  @Input('disable-sendbtn') set setDisableSendbtn(value: boolean) { this.disableSendbtn = value; }
+  @Input('odoc') set setEditableDiv(value: any) { this.oDoc = value; }
+  @Output() send: EventEmitter<any> = new EventEmitter();
+  @Output() selectEmoji: EventEmitter<any> = new EventEmitter();
+  @Output() selectImages: EventEmitter<any> = new EventEmitter();
+
+  sourceType: number;
+  isShowEmoji = false;
+  imageBase64Items: any[] = [];
+  isInput = false;
+
+  actionArea: HTMLElement;
+  actionHeight: number;
+  backgroundImageUrl = '/assets/images/icons-v3.png';
+  backgroundImageFn = () => this.backgroundImageUrl;
+
 
   constructor(
     public actionSheetController: ActionSheetController,
@@ -57,12 +64,13 @@ export class MessageBoxComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.subscribeKeyboard();
-    if (!this.oDoc)
+    if (!this.oDoc) {
       this.oDoc = this.ele.nativeElement.querySelector('#textBox');
+    }
 
     if (this.oDoc) {
       this.oDoc.addEventListener('focus', () => { this.isInput = true; });
-      this.oDoc.addEventListener('blur', () => { if (!this.oDoc.innerHTML) this.isInput = false; });
+      this.oDoc.addEventListener('blur', () => { if (!this.oDoc.innerHTML) { this.isInput = false; } });
     }
 
     setTimeout(() => {
@@ -73,10 +81,6 @@ export class MessageBoxComponent implements OnInit {
   }
 
   ionViewDidEnter() {
-    if (this.sourceType) {
-      if (this.sourceType == this.sourceTypes.library)
-        this.selectImage();
-    }
   }
 
   subscribeKeyboard() {
@@ -107,21 +111,22 @@ export class MessageBoxComponent implements OnInit {
   }
 
   addEmoji(event: any) {
-    if (this.disableTextBox && !this.oDoc) {
-      this.onSelectEmoji.emit(event);
+    if (this.disableTextbox && !this.oDoc) {
+      this.selectEmoji.emit(event);
       return;
     }
 
     this.newNode = document.createElement('span');
     this.newNode.innerHTML = '&nbsp;';
-    let emoji = this.createEmojiHtml(event.emoji);
+    const emoji = this.createEmojiHtml(event.emoji);
     this.insertTextAtCursor(emoji);
     this.insertAfter(emoji);
     this.focus(() => this.oDoc.blur());
   }
 
   insertTextAtCursor(node: Node) {
-    let range: Range, sel = window.getSelection();
+    let range: Range;
+    const sel = window.getSelection();
     if (sel.getRangeAt && sel.rangeCount && this.oDoc.contains(sel.focusNode)) {
       range = sel.getRangeAt(0);
       range.insertNode(node);
@@ -131,18 +136,21 @@ export class MessageBoxComponent implements OnInit {
     }
   }
 
-  focus(callback: Function = null) {
-    if (!this.newNode) return;
+  focus(callback: any) {
+    if (!this.newNode) {
+      return;
+    }
 
-    var range = document.createRange();
-    var sel = window.getSelection();
+    const range = document.createRange();
+    const sel = window.getSelection();
     range.setStart(this.newNode, 1);
     range.collapse(true);
     sel.removeAllRanges();
     sel.addRange(range);
 
-    if (callback)
+    if (callback) {
       callback();
+    }
   }
 
   createEmojiHtml(emoji: any) {
@@ -152,9 +160,10 @@ export class MessageBoxComponent implements OnInit {
   }
 
   createStyles(emoji: any) {
-    const styles = this.emoji.emojiSpriteStyles(emoji.sheet, 'twitter');
-    styles['margin'] = '0';
+    const styles: any = this.emoji.emojiSpriteStyles(emoji.sheet, 'twitter');
+    styles.margin = '0';
     styles['vertical-align'] = 'middle';
+    styles['background-image'] = `url(${this.backgroundImageUrl})`;
     return styles;
   }
 
@@ -164,16 +173,16 @@ export class MessageBoxComponent implements OnInit {
 
   dismiss() {
     this.modalController.dismiss({
-      'dismissed': true
+      dismissed: true
     });
   }
 
   post() {
-    let returnVal = {
+    const returnVal = {
       message: this.oDoc.innerHTML,
       imageBase64Items: this.imageBase64Items
     };
-    this.onSend.next(returnVal);
+    this.send.emit(returnVal);
     this.oDoc.innerHTML = null;
     this.resetTopStyle();
   }
@@ -182,7 +191,7 @@ export class MessageBoxComponent implements OnInit {
   pickImage(sourceType: any) {
     const options = {
       quality: 80,
-      sourceType: sourceType,
+      sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -190,7 +199,7 @@ export class MessageBoxComponent implements OnInit {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      let base64Image = imageData;
+      const base64Image = imageData;
       this.imageBase64Items.push(base64Image);
     }, () => {
     });
@@ -198,7 +207,7 @@ export class MessageBoxComponent implements OnInit {
 
   async selectImage() {
     const actionSheet = await this.actionSheetController.create({
-      header: "Select Image source",
+      header: 'Select Image source',
       buttons: [{
         text: 'Load from Library',
         handler: () => {
@@ -224,18 +233,18 @@ export class MessageBoxComponent implements OnInit {
   //#region Image picker
 
   selectImagePicker() {
-    let options: ImagePickerOptions = {
+    const options: ImagePickerOptions = {
       maximumImagesCount: 10,
       width: 1080,
       quality: 80
     };
 
-    let getImages = from(this.imagePicker.getPictures(options));
+    const getImages = from(this.imagePicker.getPictures(options));
     getImages
       .subscribe((res: string[]) => {
         if (res.length > 0) {
-          let images = res.map(imageUri => {
-            let image = {
+          const images = res.map(imageUri => {
+            const image = {
               src: this.webview.convertFileSrc(imageUri),
               base64: null
             };
@@ -247,7 +256,7 @@ export class MessageBoxComponent implements OnInit {
             return image;
           });
 
-          this.onSelectImages.next(images);
+          this.selectImages.emit(images);
         }
       });
   }

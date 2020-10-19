@@ -5,9 +5,9 @@
                 <div class="face-icon"></div>
             </ion-button>
         </ion-buttons>
-        <div *ngIf="!disableTextBox" id="textBox" class="editable" contenteditable="true" placeholder="Viết gì đó..." ng-readonly="true"></div>
+        <div *ngIf="!disableTextbox" id="textBox" class="editable" contenteditable="true" placeholder="Viết gì đó..." ng-readonly="true"></div>
         <ion-buttons class="secondary" slot="secondary">
-            <ion-button class="send" *ngIf="!disableSendBtn" (click)="post()">
+            <ion-button class="send" *ngIf="!disableSendbtn" (click)="post()">
                 <ion-icon name="send"></ion-icon>
             </ion-button>
         </ion-buttons>

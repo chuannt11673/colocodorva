@@ -1,18 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-    selector: '[briefContent]',
+    selector: '[appBriefContent]',
 })
 export class BriefContentDirective implements OnInit, AfterViewInit {
-   
+
     constructor(public el: ElementRef) {
     }
-
+    @Input() maxLength = 50;
+    @Input() showBtn = true;
     element: HTMLElement;
     hyperlink: HTMLElement;
     content: string;
     briefContent: string;
-    maxLength: number;
 
     ngOnInit(): void {
         const link = document.createElement('a');
@@ -22,7 +22,6 @@ export class BriefContentDirective implements OnInit, AfterViewInit {
             this.showAll();
         });
         this.hyperlink = link;
-        this.maxLength = 50;
     }
 
     ngAfterViewInit(): void {
@@ -36,7 +35,9 @@ export class BriefContentDirective implements OnInit, AfterViewInit {
         if (this.content.length > this.maxLength) {
             this.briefContent = this.content.slice(0, this.maxLength) + '...';
             this.element.innerHTML = this.briefContent;
-            this.element.append(this.hyperlink);
+            if (this.showBtn) {
+                this.element.append(this.hyperlink);
+            }
         }
     }
 
