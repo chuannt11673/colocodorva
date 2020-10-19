@@ -1,17 +1,17 @@
 import { Directive, ElementRef, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 
 @Directive({
-    selector: '[filledImages]',
+    selector: '[appFilledImages]',
 })
 export class FilledImagesDirective implements OnInit, AfterViewInit {
 
     constructor(public el: ElementRef) { }
-    
-    @Output() onComplete: EventEmitter<boolean> = new EventEmitter();
+
+    @Output() completed: EventEmitter<boolean> = new EventEmitter();
     @Output() viewMore: EventEmitter<boolean> = new EventEmitter();
     images: HTMLImageElement[];
     count: number;
-    originalLength: number; 
+    originalLength: number;
     get length(): number {
         return this.images ? this.images.length : 0;
     }
@@ -20,12 +20,12 @@ export class FilledImagesDirective implements OnInit, AfterViewInit {
         this.images = [...this.el.nativeElement.querySelectorAll('img')];
         this.originalLength = this.images.length;
         this.count = 0;
-        
+
         if (this.length === 1) {
             const img = this.images[0];
             img.onload = () => {
                 this.el.nativeElement.style.height = 'auto';
-                this.onComplete.emit(true);
+                this.completed.emit(true);
             };
             return;
         }
@@ -72,13 +72,14 @@ export class FilledImagesDirective implements OnInit, AfterViewInit {
                 img.style.height = 100 / remainingImgs.length + '%';
             });
         }
-        this.onComplete.emit(true);
+        this.completed.emit(true);
     }
 
     addViewMore() {
         const remainingLength = this.originalLength - this.length;
-        if (remainingLength === 0)
+        if (remainingLength === 0) {
             return;
+        }
 
         const index = this.length - 1 <= 4 ? this.length - 1 : 4;
         const lastImage = this.images[index];

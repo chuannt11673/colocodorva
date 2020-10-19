@@ -5,9 +5,7 @@
 
 .header-content {
     ion-toolbar {
-        --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
         .item {
-            --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
             position: relative;
             border-bottom: 1px solid #ccc;
             height: 100px;
@@ -39,10 +37,10 @@
     }
     .active {
         border-left: 5px solid;
-        color: $primary-color-red;
+        color: $color-red;
         padding-left: 15px;
         ion-icon {
-            color: $primary-color-red;
+            color: $color-red;
         }
     }
 }

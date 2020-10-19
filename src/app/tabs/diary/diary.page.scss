@@ -1,6 +1,5 @@
 @import 'src/variables.scss';
 .toolbar {
-    --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
     .menu-btn {
         color: #fff;
     }
@@ -10,7 +9,6 @@
 }
 
 .toolbar-secondary {
-    --background: linear-gradient(90deg, #ff0600 0%, #f31a9f 100%);
     ion-col {
         text-align: center;
         a {

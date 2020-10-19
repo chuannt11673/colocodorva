@@ -10,13 +10,13 @@ export class DatingPage implements OnInit {
   constructor() { }
   options: any = {
     itemSelection: '.card'
-  }
-  isCompleted: boolean = false;
+  };
+  isCompleted = false;
 
   ngOnInit() {
   }
 
-  onCompleted($event: boolean) {
+  completed($event: boolean) {
     this.isCompleted = $event;
   }
 }

@@ -1,4 +1,16 @@
-.divider {
-    width: 100%;
-    border-top: 1px solid #cccccc;
+:root {
+    --ion-color-baseColor: #ff0600;
+    --ion-color-baseColor-rgb: 105,187,123;
+    --ion-color-baseColor-contrast: #ffffff;
+    --ion-color-baseColor-contrast-rgb: 255,255,255;
+    --ion-color-baseColor-shade: #e60400;
+    --ion-color-baseColor-tint: #ff1d1a;
+}
+.ion-color-baseColor {
+    --ion-color-base: var(--ion-color-baseColor);
+    --ion-color-base-rgb: var(--ion-color-baseColor-rgb);
+    --ion-color-contrast: var(--ion-color-baseColor-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-baseColor-contrast-rgb);
+    --ion-color-shade: var(--ion-color-baseColor-shade);
+    --ion-color-tint: var(--ion-color-baseColor-tint);
 }

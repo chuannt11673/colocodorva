@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-    <ion-toolbar class="toolbar">
+    <ion-toolbar color="baseColor" class="toolbar">
         <ion-title>
         </ion-title>
         <ion-buttons slot="start">
@@ -14,7 +14,7 @@
 </ion-header>
 <ion-content>
     <ion-header>
-        <ion-toolbar class="toolbar-secondary">
+        <ion-toolbar color="baseColor" class="toolbar-secondary">
             <ion-grid>
                 <ion-row>
                     <ion-col>
@@ -47,7 +47,7 @@
                     <p>3 minutes ago</p>
                 </ion-label>
             </ion-item>
-            <div class="images" filledImages (onComplete)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
+            <div class="images" appFilledImages (completed)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
                 <ion-skeleton-text *ngIf="!onFillComplete" animated></ion-skeleton-text>
                 <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
                 <img src="https://images.unsplash.com/photo-1474073705359-5da2a8270c64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
@@ -83,7 +83,7 @@
                     <p>3 minutes ago</p>
                 </ion-label>
             </ion-item>
-            <div class="images" filledImages (onComplete)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
+            <div class="images" appFilledImages (completed)="onFillCompleteHandler($event)" (viewMore)="viewMore($event)">
                 <ion-skeleton-text *ngIf="!onFillComplete" animated></ion-skeleton-text>
                 <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
                 <img src="https://images.unsplash.com/photo-1474073705359-5da2a8270c64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
