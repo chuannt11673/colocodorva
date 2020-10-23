@@ -5,6 +5,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
     declarations: [],
@@ -16,7 +17,8 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
         Camera,
         PhotoLibrary,
         WebView,
-        ImagePicker
+        ImagePicker,
+        InAppBrowser
     ],
 })
 export class CoreModule {}
