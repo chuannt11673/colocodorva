@@ -4,7 +4,7 @@
 export const environment = {
   production: false
 };
-export const httpEndpoint = 'http://localhost:56271';
+export const httpEndpoint = 'https://localhost:5001';
 
 /*
  * For easier debugging in development mode, you can import the following file
