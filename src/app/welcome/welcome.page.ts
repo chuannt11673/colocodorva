@@ -2,7 +2,6 @@ import { AuthService } from './../_core/services/auth.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-welcome',
@@ -14,14 +13,12 @@ export class WelcomePage implements OnInit {
   constructor(
     public nav: NavController,
     public authService: AuthService,
-    public inAppBrowser: InAppBrowser,
-    public oidcSecurityService: OidcSecurityService) { }
+    public inAppBrowser: InAppBrowser) { }
 
   ngOnInit() {
   }
 
   facebookLogin() {
-    this.oidcSecurityService.authorize();   
   }
 
   login() {
