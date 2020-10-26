@@ -19,6 +19,9 @@ export class WelcomePage implements OnInit {
   }
 
   facebookLogin() {
+    this.authService.authorize().subscribe(() => {
+      this.nav.navigateRoot('tabs');
+    });
   }
 
   login() {

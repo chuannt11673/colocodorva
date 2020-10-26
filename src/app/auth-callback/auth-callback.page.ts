@@ -1,5 +1,6 @@
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_core/services/auth.service';
 
 @Component({
   selector: 'app-auth-callback',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthCallbackPage implements OnInit {
 
-  constructor(public nav: NavController) { }
+  constructor(public nav: NavController,
+              public authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.authorizeHandler().subscribe();
   }
 
 }
