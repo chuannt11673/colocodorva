@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    CookieService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

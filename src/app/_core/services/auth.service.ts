@@ -4,13 +4,15 @@ import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { httpEndpoint } from 'src/environments/environment';
 import { HttpService } from './http.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    constructor(private http: HttpService) {
+    constructor(private http: HttpService,
+                private cookieService: CookieService) {
         this.userManage = new UserManager({
             authority: httpEndpoint,
             client_id: 'spa',
@@ -37,7 +39,8 @@ export class AuthService {
         }));
     }
 
-    authorize() {
+    authorize(provider?: string) {
+        this.cookieService.set('provider', provider);
         const request = this.userManage.signinPopup();
         return from(request).pipe(map(user => {
             this.setToken(user.access_token);
