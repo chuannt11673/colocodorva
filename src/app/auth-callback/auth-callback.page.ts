@@ -13,7 +13,11 @@ export class AuthCallbackPage implements OnInit {
               public authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.authorizeHandler().subscribe();
+    this.authService.authorizeHandler().subscribe(_ => {
+      const event = new Event('loggedIn');
+      window.opener.window.document.dispatchEvent(event);
+      window.close();
+    });
   }
 
 }

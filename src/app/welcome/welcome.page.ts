@@ -19,6 +19,9 @@ export class WelcomePage implements OnInit {
   }
 
   facebookLogin() {
+    document.addEventListener('loggedIn', (e) => {
+      console.log('event', e);
+    });
     this.authService.authorize('Facebook').subscribe(() => {
       this.nav.navigateRoot('tabs');
     }, err => { });
