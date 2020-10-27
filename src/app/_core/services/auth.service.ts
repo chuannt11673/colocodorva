@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserManager } from 'oidc-client';
+import { CordovaPopupNavigator, UserManager } from 'oidc-client';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { httpEndpoint } from 'src/environments/environment';
@@ -19,12 +19,19 @@ export class AuthService {
             scope: 'openid profile WebAppAPI',
             response_type: 'code',
             popup_redirect_uri: window.location.origin + '/auth-callback',
-            popup_post_logout_redirect_uri: window.location.origin
+            popup_post_logout_redirect_uri: window.location.origin,
+            popupNavigator: new CordovaPopupNavigator()
         });
     }
     userManage: UserManager;
 
     private tokenEndpoint = '/connect/token';
+
+    getUser() {
+        return from(this.userManage.getUser()).pipe(map(user => {
+            this.setToken(user.access_token);
+        }));
+    }
 
     login(username: string, password: string) {
         const formData = new FormData();
