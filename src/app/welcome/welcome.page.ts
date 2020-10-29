@@ -31,8 +31,6 @@ export class WelcomePage implements OnInit {
   }
 
   login() {
-    this.authService.login('chuannt11673@gmail.com', 'Root@123').subscribe(() => {
-      this.nav.navigateForward('tabs');
-    });
+    this.nav.navigateRoot('tabs');
   }
 }
